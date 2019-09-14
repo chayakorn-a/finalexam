@@ -31,12 +31,10 @@ func authMiddleware(c *gin.Context) {
 	c.Next()
 }
 
-// On git Bash
-// DATABASE_URL=postgres://ednlnmoi:huVNUQvl1bR9puqxPOrGkJ-pPiVQ23hY@otto.db.elephantsql.com:5432/ednlnmoi go run main.go
 func main() {
 	db = GetSqlDB()
 
-	CreateCustomerTable(db)
+	CreateCustomerTable()
 
 	r := gin.Default()
 	r.Use(authMiddleware)
@@ -170,7 +168,7 @@ func DeleteCustomerTable(id int) {
 
 // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-func CreateCustomerTable(db *sql.DB) {
+func CreateCustomerTable() {
 	createTb := `
 	CREATE TABLE IF NOT EXISTS customers (
 	id SERIAL PRIMARY KEY,
