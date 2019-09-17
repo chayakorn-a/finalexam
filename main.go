@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"os"
 	"strconv"
 
 	"github.com/gin-gonic/gin"
@@ -187,7 +186,7 @@ func CreateCustomerTable() {
 }
 
 func GetSqlDB() *sql.DB {
-	url := os.Getenv("DATABASE_URL")
+	url := "postgres://ednlnmoi:huVNUQvl1bR9puqxPOrGkJ-pPiVQ23hY@otto.db.elephantsql.com:5432/ednlnmoi"
 	fmt.Println(url)
 	db1, err := sql.Open("postgres", url)
 
